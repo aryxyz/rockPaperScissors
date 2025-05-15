@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
     
-
+    <h1 id="winner-name"></h1>
     <div class="container">
-        <div class="choices">
+        <div id="choices">
             <div class="choice">Rock</div>
             <div class="choice">Paper</div>
             <div class="choice">Scissors</div>
         </div>
 
-        <div id="state-message">You win</div>
+        <div id="state-message"></div>
         <div id="scores">
             
-            <p class="player-score">Player : <span>0</span></p>
+            <p>You : <span id="player-score">0</span></p>
            
-            <p class="computer-score">Computer : <span>0</span> </p>
+            <p>Computer : <span id="computer-score">0</span></p>
 
         </div>
     </div>

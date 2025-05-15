@@ -1,39 +1,54 @@
 
 let humanScore = 0
 let computerScore = 0
-playGame()
 
-function playGame(){
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    console.log("---Finish---")
 
-}
+
+document.querySelector("#choices").addEventListener('click',function(e){
+
+    let humanChoice = e.target.textContent.toLowerCase();
+    if(humanScore < 4 && computerScore < 4){
+        playRound(humanChoice,getComputerChoice());
+        
+    }else{
+        playRound(humanChoice,getComputerChoice());
+        let winner = "";
+        if(humanScore > computerScore){
+            winner = "You"
+        }else{
+            winner = "Computer"
+        }
+        document.querySelector("#winner-name").textContent = winner + " " + "Wins"
+
+    }
+
+    
+});
+
+
 
 
 function playRound(humanChoice,computerChoice){
-    console.log("----------------   ")
+    let message = "";
     if(humanChoice == computerChoice){
-        console.log("same")
+        message = "same";
     }else if(humanChoice == "paper" && computerChoice == "rock"){
-        console.log("You Win " + humanChoice + " beat " + computerChoice)
+        message = "You Win " + humanChoice + " beat " + computerChoice;
         humanScore+=1;
     }else if(humanChoice == "rock" && computerChoice=="scissors"){
-        console.log("You Win " + humanChoice + " beat " + computerChoice)
+        message = "You Win " + humanChoice + " beat " + computerChoice;
         humanScore+=1;
     }else if(humanChoice == "scissors" && computerChoice=="paper"){
-        console.log("You Win " + humanChoice + " beat " + computerChoice)
+        message = "You Win " + humanChoice + " beat " + computerChoice;
         humanScore+=1;
     }else{
-        console.log("You Lose " + computerChoice + " beat " + humanChoice)
+       message = "You Lose " + computerChoice + " beat " + humanChoice;
         computerScore+=1;
     }
+    document.querySelector("#state-message").textContent = message;
 
-    console.log("Computer "+computerScore)
-    console.log("You " + computerScore)
+    document.querySelector("#player-score").textContent = humanScore;
+    document.querySelector("#computer-score").textContent = computerScore;
 
 
 
@@ -60,7 +75,3 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    // let choice = prompt("rock or paper  or scissors ? ")
-    return choice.toLowerCase()
-}
